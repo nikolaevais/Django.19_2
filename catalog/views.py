@@ -5,4 +5,4 @@ def home(request):
 
 
 def contacts(request):
-    return render(request, 'catalog/contacts.html')
+    return render(request, 'contacts.html')
