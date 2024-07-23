@@ -22,24 +22,8 @@
         продать</p>
 </div>
 
-<div class="container">
-    <div class="row text-center">
-        {% for product in products %}
-        <div class="col-3">
-            <div class="card mb-4 box-shadow">
-                <div class="card-header">
-                    <h4 class="my-0 font-weight-normal">Удобный сервис рассылок</h4>
-                </div>
-                <div class="card-body">
-                    <h1 class="card-title pricing-card-title">$ 140</h1>
-                    <p class="text-justify">{{ product.description|truncatechars:100 }}</p>
-                    <a type="button" class="btn btn-lg btn-block btn-outline-primary" href="product1/">Купить</a>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-
+{% block content %}
+{% endblock %}
 
     <footer class="pt-4 my-md-5 pt-md-5 border-top">
         <div class="row">
