@@ -6,3 +6,7 @@ def home(request):
 
 def contacts(request):
     return render(request, 'contacts.html')
+
+
+def product1(request):
+    return render(request, 'product1.html')
