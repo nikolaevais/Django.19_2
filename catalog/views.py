@@ -1,26 +1,26 @@
-from django.shortcuts import render, get_object_or_404
+from django.views.generic import ListView, DetailView, TemplateView
 
 from catalog.models import Product
 
 
-def home(request):
-    products = Product.objects.all()
-    context = {
-        'products': products,
-        'title': 'Главная'
-    }
-    return render(request, 'catalog/home.html', context)
+class HomeListView(ListView):
+    model = Product
 
 
-def contacts(request):
-    context = {
-        'title': 'Контакты'
-    }
-    return render(request, 'catalog/contacts.html', context)
+class ProductDetailView(DetailView):
+    model = Product
 
 
-def product(request, pk):
-    product = get_object_or_404(Product, pk=pk)
-    contex = {'product': product}
-    return render(request, 'catalog/product.html', contex)
+class ContactsView(TemplateView):
+    template_name = "catalog/contacts.html"
+
+#    def post(self, request):
+#        """Метод получения информации со страницы контакты"""
+#        if request.method == 'POST':
+#            name = request.POST.get('name')
+#            phone = request.POST.get('phone')
+#            message = request.POST.get('message')
+#            print(f'Имя -{name}, телефон - {phone}, сообщение - {message}')
+#        return render(request, 'contacts.html')
+
 
