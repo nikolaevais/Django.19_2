@@ -20,5 +20,5 @@ class Blog(models.Model):
         verbose_name_plural = 'Блоги'
         ordering = ['title']
 
-    def get_absolute_url(self):
-        return reverse('blog', args=[str(self.id)])
+    #def get_absolute_url(self):
+    #    return reverse('blog', args=[str(self.id)])
