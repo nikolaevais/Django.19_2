@@ -1,8 +1,9 @@
+from django.forms import inlineformset_factory
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView
 
-from catalog.forms import ProductForm
-from catalog.models import Product
+from catalog.forms import ProductForm, VersionForm
+from catalog.models import Product, Version
 
 
 class HomeListView(ListView):
@@ -36,3 +37,12 @@ class ContactsView(TemplateView):
 #            message = request.POST.get('message')
 #            print(f'Имя -{name}, телефон - {phone}, сообщение - {message}')
 #        return render(request, 'contacts.html')
+
+class VersionUpdateView(UpdateView):
+    model = Version
+    form_class = VersionForm
+    success_url = reverse_lazy('catalog:home')
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+        VersionFormset = inlineformset_factory()
