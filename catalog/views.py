@@ -1,9 +1,8 @@
-from django.forms import inlineformset_factory
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView
 
-from catalog.forms import ProductForm, VersionForm
-from catalog.models import Product, Version, Category
+from catalog.forms import ProductForm
+from catalog.models import Product
 
 
 class HomeListView(ListView):
