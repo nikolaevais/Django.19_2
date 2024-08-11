@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView
 
 from catalog.forms import ProductForm, VersionForm
-from catalog.models import Product, Version
+from catalog.models import Product, Version, Category
 
 
 class HomeListView(ListView):
@@ -27,7 +27,10 @@ class ProductUpdateView(UpdateView):
 
 
 class ContactsView(TemplateView):
+    """Класс для вывода страницы с контактами"""
     template_name = "catalog/contacts.html"
+
+
 
 #    def post(self, request):
 #        """Метод получения информации со страницы контакты"""
@@ -37,12 +40,3 @@ class ContactsView(TemplateView):
 #            message = request.POST.get('message')
 #            print(f'Имя -{name}, телефон - {phone}, сообщение - {message}')
 #        return render(request, 'contacts.html')
-
-class VersionUpdateView(UpdateView):
-    model = Version
-    form_class = VersionForm
-    success_url = reverse_lazy('catalog:home')
-
-    def get_context_data(self, **kwargs):
-        context_data = super().get_context_data(**kwargs)
-        VersionFormset = inlineformset_factory()
