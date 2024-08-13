@@ -39,9 +39,9 @@ class Product(models.Model):
 
 
 class Version(models.Model):
-    product = models.ForeignKey(Product, related_name="version", on_delete=models.SET_NULL, **NULLABLE, verbose_name="Продукт"),
-    version_number = models.IntegerField(verbose_name="Номер версии"),
-    version_name = models.CharField(max_length=50, verbose_name="Название версии"),
+    product = models.ForeignKey(Product, related_name="version", on_delete=models.SET_NULL, **NULLABLE, verbose_name="Продукт")
+    version_number = models.IntegerField(verbose_name="Номер версии")
+    version_name = models.CharField(max_length=50, verbose_name="Название версии")
     current_version = models.BooleanField(default=True, verbose_name="Признак текущей версии")
 
     class Meta:

@@ -42,7 +42,8 @@ class ProductForm(StyleFormMixin, ModelForm):
         return clean_description
 
 
+
 class VersionForm(StyleFormMixin, ModelForm):
     class Meta:
         model = Version
-        fields = ('current_version',)
+        fields = "__all__"
