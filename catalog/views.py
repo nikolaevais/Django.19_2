@@ -9,6 +9,19 @@ from catalog.models import Product, Version
 class HomeListView(ListView):
     model = Product
 
+    context_object_name = 'products'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context_data = super().get_context_data()
+        version_dict = {}
+        products = context_data['products']
+        for product in products:
+            product_version = Version.objects.filter(product=product, current_version=True).first()
+            version_dict[product.name] = product_version
+        context_data['current_versions'] = version_dict
+        return context_data
+
+
 
 class ProductDetailView(DetailView):
     model = Product

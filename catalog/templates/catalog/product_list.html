@@ -10,10 +10,10 @@
             <div class="card mb-4 box-shadow">
                 <div class="card-header">
                     <h4 class="my-0 font-weight-normal">{{ product.name }}</h4>
-                    {% if object.versions.all %}
-                    {% for version in object.versions.all %}
+                    {% if product.version.all %}
+                    {% for version in product.version.all %}
                     <ul class="list-unstyled mt-3 mb-4 text-start m-3">
-                        {% if version.active %}
+                        {% if version.current_version %}
                         <li> Название версии: {{version.version_name}}</li>
                         <li> Номер версии: {{version.version_number}}</li>
                         {% endif %}
