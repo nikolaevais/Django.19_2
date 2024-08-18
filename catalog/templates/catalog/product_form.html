@@ -4,36 +4,41 @@
 
 
 {% block content %}
-<div class="album py-5 bg-body-tertiary">
-    <div class="container">
-        <form method="post" enctype="multipart/form-data">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <div class="col-6">
-                    <div class="card shadow-sm">
-                        <h3
-                                class="card-title">
-                            Добавление товара
-                        </h3>
-                        <div class="card-body">
 
-                            {% csrf_token %}
-                            {{ form.as_p }}
-                            <button type="submit" class="btn btn-sm btn-outline-secondary">Сохранить</button>
-                        </div>
+<div class="col-12">
+    <form class="row" method="post" enctype="multipart/form-data">
+        <div class="col-6">
+            <div class="card"
+            <div class="card-header">
+                <h3 class="card-title">
+                    Добавление товара
+                </h3>
+                <div>
+                    <div class="card-body">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-sm btn-outline-secondary">Сохранить</button>
                     </div>
-                </div>
+                </div class="card-footer">
             </div>
-            <div class="col-6">
-                <div class="card shadow-sm">
+        </div>
+        <div class="col-6">
+            <div class="card"
+            <div class="card-header">
+                <h3 class="card-title">
+                    Добавление версии товара
+                </h3>
+                <div>
                     <div class="card-body">
                         {{ formset.management_form }}
                         {% for form in formset.forms %}
                         {{ form.as_p }}
                         {% endfor %}
+                        <button type="submit" class="btn btn-sm btn-outline-secondary">Сохранить</button>
                     </div>
-                </div>
+                </div class="card-footer">
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
 </div>
 {% endblock %}
