@@ -3,7 +3,9 @@
 {% block content %}
 
 <div class="col-12 mb-5">
+    {% if user.is_authenticated %}
     <a class="btn btn-outline-primary" href="{% url 'catalog:create_product' %}">Добавить продукт</a>
+    {% endif %}
     <div class="bg-danger row text-center">
         {% for product in object_list %}
         <div class="col-3">
