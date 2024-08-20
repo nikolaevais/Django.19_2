@@ -18,7 +18,7 @@
                             <div class="btn-group">
                                 <a type="button" class="btn btn-lg btn-block btn-outline-primary"
                                    href="">Купить</a>
-                                {% if perms.catalog.is_unpublish_product and perms.catalog.change_product_description and perms.catalog.change_product_category or user == product.owner %}
+                                {% if perms.catalog.is_unpublish_product and perms.catalog.change_description_product and perms.catalog.change_category_product or user == object.owner %}
                                 <a type="button" class="btn btn-lg btn-block btn-outline-primary"
                                    href="{% url 'catalog:update_product' object.pk %}">Редактировать</a>
                                 {% endif %}
