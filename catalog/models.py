@@ -29,7 +29,9 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата последнего изменения')
 
-    owner = models.ForeignKey(User, verbose_name="владелец", **NULLABLE, on_delete=models.SET_NULL)
+    owner = models.ForeignKey(User, verbose_name="Владелец", **NULLABLE, on_delete=models.SET_NULL)
+
+    is_unpublish = models.BooleanField(default=False, verbose_name="Статус публикации продукта")
 
     def  __str__(self):
         return f'{self.name} {self.description} {self.category}'
@@ -38,6 +40,11 @@ class Product(models.Model):
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты'
         ordering = ['name',]
+        permissions = [
+            ("is_unpublish_product", "Is_unpublish product"),
+            ("change_product_description", "Change product description"),
+            ("change_product_category", "Change product category")
+        ]
 
 
 

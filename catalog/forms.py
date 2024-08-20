@@ -41,7 +41,10 @@ class ProductForm(StyleFormMixin, ModelForm):
                 raise forms.ValidationError(f'{word} - это слово нельзя использовать в описании')
         return clean_description
 
-
+class ProductModeratorForm(StyleFormMixin, ModelForm):
+    class Meta:
+        model = Product
+        fields = ('description', 'category', 'is_unpublish', )
 
 class VersionForm(StyleFormMixin, ModelForm):
     class Meta:
