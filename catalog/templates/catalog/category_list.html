@@ -1,0 +1,22 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+
+<div class="col-12 mb-5">
+    <div class="bg-danger row text-center">
+        {% for category in object_list %}
+        <div class="col-3">
+            <div class="card mb-4 box-shadow">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">{{ category.name }}</h4>
+                </div>
+                <div class="card-body">
+                    <p class="text-warning">{{ category.description }}</p>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
