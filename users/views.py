@@ -1,7 +1,8 @@
 import secrets
 
+from django.contrib.auth.views import PasswordResetView
 from django.core.mail import send_mail
-from django.shortcuts import redirect, get_object_or_404
+from django.shortcuts import redirect, get_object_or_404, render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView
 
@@ -42,5 +43,19 @@ def email_verification(request, token):
     user.save()
     return redirect(reverse("users:login"))
 
-
+def reset_password(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        user = get_object_or_404(User, email=email)
+        new_password = User.objects.make_random_password(10)
+        user.set_password(new_password)
+        user.save()
+        send_mail(
+            subject='Сброс пароля',
+            message=f' Ваш новый пароль: {new_password}',
+            from_email=EMAIL_HOST_USER,
+            recipient_list=[user.email]
+        )
+        return redirect(reverse('users:login'))
+    return render(request, 'users/reset_password.html')
 
